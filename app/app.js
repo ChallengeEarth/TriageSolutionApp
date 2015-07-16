@@ -4,6 +4,7 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.services',
+  'myApp.controllers',
   'myApp.languageChooser',
   'myApp.questions',
   'myApp.version'
