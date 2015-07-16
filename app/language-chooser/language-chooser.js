@@ -9,6 +9,6 @@ angular.module('myApp.languageChooser', ['ngRoute'])
   });
 }])
 
-.controller('LanguageChooserCtrl', [function() {
-
+.controller('LanguageChooserCtrl', ['$scope','Language',function($scope,Language) {
+  $scope.languages = Language.query();
 }]);
