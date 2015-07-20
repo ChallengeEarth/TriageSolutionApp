@@ -7,8 +7,9 @@ angular.module('myApp', [
   'myApp.controllers',
   'myApp.languageChooser',
   'myApp.questions',
+  'myApp.questionsFinished',
   'myApp.version'
 ]).
-config(['$routeProvider', function($routeProvider) {
+  config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/language-chooser-view'});
 }]);

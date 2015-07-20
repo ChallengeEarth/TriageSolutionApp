@@ -7,6 +7,32 @@ triageSolutionServices.factory('Language', ['$resource',
     return $resource('http://triagesolution.azurewebsites.net/api/languages', {}, {});
   }]);
 
+triageSolutionServices.factory('Question', ['$resource',
+  function($resource){
+    return $resource('http://triagesolution.azurewebsites.net/api/questions/:questionId', {},
+      {
+        getFirstQuestion : {method:'GET',params:{questionId:'first'}}
+      });
+  }]);
+
+triageSolutionServices.factory('Answer', ['$resource',
+  function($resource){
+    return $resource('http://triagesolution.azurewebsites.net/api/patients/:patientId/questions/:questionId/answer', {},
+      {
+        answerQuestion : {method:'POST'}
+      });
+  }]);
+
+triageSolutionServices.factory('SpecialMessage', ['$resource',
+  function($resource){
+    return $resource('http://triagesolution.azurewebsites.net/api/special-messages/:messageId', {},
+      {
+        getQuestionsFinished : { method:'GET',params:{messageId:'all-questions-answered'}}
+      });
+  }]);
+
+
+
 triageSolutionServices.factory('SettingService',
   function(){
     var choosenLanguage = {};
