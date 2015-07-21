@@ -31,6 +31,11 @@ triageSolutionServices.factory('SpecialMessage', ['$resource',
       });
   }]);
 
+triageSolutionServices.factory('Progress', ['$resource',
+  function($resource){
+    return $resource('http://triagesolution.azurewebsites.net/api/patients/:patientId/progress', {}, {});
+  }]);
+
 
 
 triageSolutionServices.factory('SettingService',
