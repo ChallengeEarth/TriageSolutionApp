@@ -8,7 +8,19 @@ angular.module('myApp.virtualAnteroom', ['ngRoute'])
       controller: 'VirtualAnteroomCtrl'
     });
   }])
-  .controller('VirtualAnteroomCtrl','Patient' ['$scope', function ($scope, Patient) {
+  .controller('VirtualAnteroomCtrl',['$scope','Patient', function ($scope, Patient) {
+    $scope.patients = Patient.query();
+    $scope.newPatient = new Patient();
 
+    $scope.deletePatient = function (patientToDelete) {
+      patientToDelete.$remove({patientId:patientToDelete.Id});
+      $scope.patients.splice($scope.patients.indexOf(patientToDelete),1);
+    };
+
+    $scope.createNewPatient = function () {
+      $scope.newPatient.$save();
+      $scope.patients.push($scope.newPatient);
+      $scope.newPatient = new Patient();
+    };
   }]);
 

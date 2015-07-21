@@ -8,7 +8,10 @@ angular.module('myApp.languageChooser', ['ngRoute'])
       controller: 'LanguageChooserCtrl'
     });
   }])
-  .controller('LanguageChooserCtrl', ['$scope', 'SettingService', 'Language', function ($scope, SettingService, Language) {
+  .controller('LanguageChooserCtrl', ['$scope', 'SettingService', 'Patient', 'Language', function ($scope, SettingService,Patient, Language) {
+
+    $scope.currentPatient = Patient.getLatestPatient();
+    SettingService.setCurrentPatient($scope.currentPatient);
 
     //transfer methods from the SettingService to this controller. What we aim for is to share the choosen-language over multiple controllers, so we store it in the SettingService-Service
     $scope.getLanguage = SettingService.getLanguage;

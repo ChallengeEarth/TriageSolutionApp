@@ -8,7 +8,8 @@ angular.module('myApp', [
   'myApp.languageChooser',
   'myApp.questions',
   'myApp.questionsFinished',
-  'myApp.version'
+  'myApp.version',
+  'myApp.virtualAnteroom'
 ]).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/language-chooser-view'});

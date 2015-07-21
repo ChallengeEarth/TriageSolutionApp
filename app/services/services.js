@@ -15,6 +15,14 @@ triageSolutionServices.factory('Question', ['$resource',
       });
   }]);
 
+triageSolutionServices.factory('Patient', ['$resource',
+  function($resource){
+    return $resource('http://triagesolution.azurewebsites.net/api/patients/:patientId', {},
+      {
+        getLatestPatient : {method:'GET',params:{patientId:'latest'}}
+      });
+  }]);
+
 triageSolutionServices.factory('Answer', ['$resource',
   function($resource){
     return $resource('http://triagesolution.azurewebsites.net/api/patients/:patientId/questions/:questionId/answer', {},
@@ -40,8 +48,10 @@ triageSolutionServices.factory('Progress', ['$resource',
 
 triageSolutionServices.factory('SettingService',
   function(){
-    var choosenLanguage = {};
     var settingService = {};
+
+    var choosenLanguage = {};
+    var currentPatient = {};
 
     settingService.setLanguage = function (newLanguage) {
       choosenLanguage = newLanguage;
@@ -49,6 +59,14 @@ triageSolutionServices.factory('SettingService',
 
     settingService.getLanguage = function () {
       return choosenLanguage;
+    };
+
+    settingService.setCurrentPatient = function (patient) {
+      currentPatient = patient;
+    };
+
+    settingService.getCurrentPatient = function () {
+      return currentPatient;
     };
 
     return settingService;

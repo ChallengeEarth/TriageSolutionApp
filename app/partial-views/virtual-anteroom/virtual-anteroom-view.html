@@ -1,18 +1,32 @@
 <div class="page-header">
-  <h1>Wählen Sie Ihre Sprache</h1>
-</div>
+  <h1>Virtual anteroom</h1>
+  <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Progress</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="patient in patients">
+        <th>{{patient.Id}}</th>
+        <td>{{patient.Name}}</td>
+        <td>{{patient.CurrentProgress.QuestionsAnswered}} of {{patient.CurrentProgress.TotalQuestions}}</td>
+        <td><button type="button" class="btn btn-primary btn-sm" ng-click="deletePatient(patient)">Delete</button></td>
+      </tr>
+    </table>
 
-<div class="row">
-  <div class="col-sm-3" ng-repeat="lang in languages" ng-click="setLanguage(lang)">
-    <a href="#/questions-view">
-      <div class="panel panel-default">
-        <div class="panel-heading text-center">
-          <h3 class="panel-title">{{lang.LanguageExample}}</h3>
-        </div>
-        <div class="panel-body">
-          <img ng-src="{{lang.LanguageIconUrl}}" class="img-responsive center-block">
-        </div>
-      </div>
-    </a>
+    <form name="newPatientForm" ng-submit="createNewPatient()">
+      <h4>Create a new Patient</h4>
+      <fieldset class="form-group">
+        <input ng-model="newPatient.Name" type="text" class="form-control" placeholder="John Doe" title="Name" />
+      </fieldset>
+      <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Create patient" />
+      </fieldset>
+    </form>
   </div>
 </div>
