@@ -4,12 +4,12 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.services',
-  'myApp.controllers',
+  'myApp.filters',
   'myApp.languageChooser',
   'myApp.questions',
   'myApp.questionsFinished',
-  'myApp.version',
-  'myApp.virtualAnteroom'
+  'myApp.virtualAnteroom',
+  'myApp.version'
 ]).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/language-chooser-view'});
