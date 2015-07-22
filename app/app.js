@@ -9,7 +9,9 @@ angular.module('myApp', [
   'myApp.questions',
   'myApp.questionsFinished',
   'myApp.virtualAnteroom',
-  'myApp.version'
+  'myApp.version',
+  'chieffancypants.loadingBar',
+  'ngAnimate'
 ]).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/language-chooser-view'});
