@@ -1,32 +1,72 @@
 <div class="page-header">
-  <h1>Virtual anteroom</h1>
-  <div class="bs-example" data-example-id="striped-table">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Progress</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="patient in patients">
-        <th>{{patient.Id}}</th>
-        <td>{{patient.Name}}</td>
-        <td><span class="label" ng-class="patient.CurrentProgress.TotalQuestions == patient.CurrentProgress.QuestionsAnswered  ? 'label-success' : 'label-warning'">{{patient.CurrentProgress | progressPercentage}}</span></td>
-        <td><button type="button" class="btn btn-primary btn-sm" ng-click="deletePatient(patient)">Delete</button></td>
-      </tr>
-    </table>
+  <h1>Virtueller Warteraum</h1>
+</div>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Aktuelle Patienten</div>
 
-    <form name="newPatientForm" ng-submit="createNewPatient()">
-      <h4>Create a new Patient</h4>
-      <fieldset class="form-group">
-        <input ng-model="newPatient.Name" type="text" class="form-control" placeholder="John Doe" title="Name" />
-      </fieldset>
-      <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary pull-right" value="Create patient" />
-      </fieldset>
-    </form>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Patienten-ID</th>
+      <th>Name</th>
+      <th>Alter</th>
+      <th>Hauptbeschwerde</th>
+      <th>Befragungs-Fortschritt</th>
+      <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="patient in patients">
+      <th>{{patient.Id}}</th>
+      <td>{{patient.Name}}</td>
+      <td>{{patient.Age}}</td>
+      <td>{{patient.ChiefComplaint}}</td>
+      <td>
+        <strong>
+          <span class="label" ng-class="patient.CurrentProgress.TotalQuestions == patient.CurrentProgress.QuestionsAnswered  ? 'label-success' : 'label-warning'">{{patient.CurrentProgress | progressPercentage}}</span>
+        </strong>
+        {{patient.CurrentProgress.QuestionsAnswered}} von {{patient.CurrentProgress.TotalQuestions}} Fragen
+      </td>
+      <td>
+        <button type="button" class="btn btn-success" ng-click="selectPatient(patient)">Auswertung anzeigen</button>
+        <button type="button" class="btn btn-danger" ng-click="deletePatient(patient)">Löschen</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col-xs-6 col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">Neuer Patienten erfassen</div>
+      <div class="panel-body">
+        <form name="newPatientForm" ng-submit="createNewPatient()">
+          <fieldset class="form-group">
+            <input ng-model="newPatient.Name" type="text" class="form-control" placeholder="John Doe" title="Name" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input ng-model="newPatient.Age" type="number" class="form-control" placeholder="53" title="Alter" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input ng-model="newPatient.ChiefComplaint" type="text" class="form-control" placeholder="Atemlosigkeit" title="Hauptbeschwerde" />
+          </fieldset>
+          <fieldset class="form-group">
+            <input type="submit" class="btn btn-primary pull-right" value="Patient erstellen" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-8">
+    <div class="panel panel-success" ng-hide="selectedPatient == null">
+      <div class="panel-heading">Auswertung {{getSelectPatientPersonInformation()}}</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="answeredQuestion in selectedPatient.getQuestionsWithAnswerValues()">{{answeredQuestion.QuestionMessage}}  <strong>{{answeredQuestion.answers[0].AnswerMessage}}</strong></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
+
