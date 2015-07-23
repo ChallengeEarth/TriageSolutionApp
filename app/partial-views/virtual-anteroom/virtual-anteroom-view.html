@@ -41,18 +41,18 @@
     <div class="panel panel-default">
       <div class="panel-heading">Neuer Patienten erfassen</div>
       <div class="panel-body">
-        <form name="newPatientForm" ng-submit="createNewPatient()">
-          <fieldset class="form-group">
-            <input ng-model="newPatient.Name" type="text" class="form-control" placeholder="John Doe" title="Name" />
+        <form name="newPatientForm" novalidate>
+          <fieldset class="form-group" ng-class="newPatientForm.patientName.$invalid ? 'has-error' : 'has-success'">
+            <input name="patientName" ng-model="newPatient.Name" type="text" class="form-control" placeholder="John Doe" title="Name" required />
+          </fieldset>
+          <fieldset class="form-group" ng-class="newPatientForm.patientAge.$invalid ? 'has-error' : 'has-success'">
+            <input name="patientAge" ng-model="newPatient.Age" type="number" class="form-control" placeholder="53" title="Alter" required />
+          </fieldset>
+          <fieldset class="form-group" ng-class="newPatientForm.patientChiefComplaint.$invalid ? 'has-error' : 'has-success'">
+            <input name="patientChiefComplaint" ng-model="newPatient.ChiefComplaint" type="text" class="form-control" placeholder="Atemlosigkeit" title="Hauptbeschwerde" required />
           </fieldset>
           <fieldset class="form-group">
-            <input ng-model="newPatient.Age" type="number" class="form-control" placeholder="53" title="Alter" />
-          </fieldset>
-          <fieldset class="form-group">
-            <input ng-model="newPatient.ChiefComplaint" type="text" class="form-control" placeholder="Atemlosigkeit" title="Hauptbeschwerde" />
-          </fieldset>
-          <fieldset class="form-group">
-            <input type="submit" class="btn btn-primary pull-right" value="Patient erstellen" />
+            <input type="submit" ng-click="createNewPatient()" ng-disabled="newPatientForm.$invalid" class="btn btn-primary pull-right" value="Patient erstellen" />
           </fieldset>
         </form>
       </div>
