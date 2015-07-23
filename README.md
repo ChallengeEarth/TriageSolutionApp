@@ -17,7 +17,9 @@ While the API-part is hosted on Azure, we use the divshot-cloud to host the clie
 The login is connected with the ursin.brunner@gmail.com Github-Account.
 
 All you need to re-deploy is:
+
 1. navigate to the `/app-directory`
+
 2. run `divshot push`
 
 Installing divshot on a new machine is also very easy, see this: http://docs.divshot.com/guides/quick-start
