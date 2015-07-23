@@ -43,13 +43,13 @@
       <div class="panel-body">
         <form name="newPatientForm" novalidate>
           <fieldset class="form-group" ng-class="newPatientForm.patientName.$invalid ? 'has-error' : 'has-success'">
-            <input name="patientName" ng-model="newPatient.Name" type="text" class="form-control" placeholder="Bitte Name eingeben" title="Name" required />
+            <input name="patientName" ng-model="newPatient.Name" type="text" class="form-control" placeholder="Manfred Mustermann" title="Name" required />
           </fieldset>
           <fieldset class="form-group" ng-class="newPatientForm.patientAge.$invalid ? 'has-error' : 'has-success'">
-            <input name="patientAge" ng-model="newPatient.Age" type="number" class="form-control" placeholder="Bitte Alter eingeben" title="Alter" required />
+            <input name="patientAge" ng-model="newPatient.Age" type="number" class="form-control" placeholder="53" title="Alter" required />
           </fieldset>
           <fieldset class="form-group" ng-class="newPatientForm.patientChiefComplaint.$invalid ? 'has-error' : 'has-success'">
-            <input name="patientChiefComplaint" ng-model="newPatient.ChiefComplaint" type="text" class="form-control" placeholder="Bitte Hauptbeschwerde eingeben" title="Hauptbeschwerde" required />
+            <input name="patientChiefComplaint" ng-model="newPatient.ChiefComplaint" type="text" class="form-control" placeholder="Atemlosigkeit" title="Hauptbeschwerde" required />
           </fieldset>
           <fieldset class="form-group">
             <input type="submit" ng-click="createNewPatient()" ng-disabled="newPatientForm.$invalid" class="btn btn-primary pull-right" value="Patient erstellen" />
