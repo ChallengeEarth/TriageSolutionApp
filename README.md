@@ -24,3 +24,10 @@ All you need to re-deploy is:
 
 Installing divshot on a new machine is also very easy, see this: http://docs.divshot.com/guides/quick-start
 
+## Hosting on different platforms
+Because we host the API on another platform than the client-application, we use CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). The CORS-calls/headers are configured in the API, see the `Startup.cs-class`.
+
+## Other tips
+Browser-Caching is, as always, an issue when developing! Easiest way to solve it: always open the DevTools-Window in Chrome and activate the setting "Disable Cache while DevTools is open".
+
+
