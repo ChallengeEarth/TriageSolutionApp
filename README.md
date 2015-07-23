@@ -3,9 +3,12 @@ The Triage Solution App is the client side application of the Triage-Solution pr
 
 ## Package Manager
 We use the tools angular js suggests: `npm` together with `bower`. What do you need to do to add a new dependency?
-1. Add the dependency to the `bower.json`-file (you find it in the root folder) 
+1. Add the dependency to the `bower.json`-file (you find it in the root folder)
+
 2. Run `npm install` 
+
 3. The module will be installed under /app/bower_components/. Here you find the js-scripts and css-files for this module. 
+
 4. Add a link to the js-script/css-files in your `index.html`. Take care, the order is important! if your new dependency has for example a dependency to angular, it needs to be placed below the angular-include (in `index.html`). 
 
 ## Important commands 
